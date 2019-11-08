@@ -5,7 +5,7 @@ ActiveAdmin.register Status do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :status
+   permit_params :status
   #
   # or
   #
@@ -14,5 +14,5 @@ ActiveAdmin.register Status do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
+
 end
