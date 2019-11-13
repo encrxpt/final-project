@@ -1,5 +1,5 @@
 class Status < ApplicationRecord
   has_many :product
 
-  validates :status, presence: true
+  validates :name, presence: true
 end
