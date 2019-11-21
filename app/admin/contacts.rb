@@ -5,7 +5,7 @@ ActiveAdmin.register Contact do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-   permit_params :name, :phone, :email, :description
+  # permit_params :name, :phone, :email, :description
   #
   # or
   #
@@ -14,5 +14,5 @@ ActiveAdmin.register Contact do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-
+  
 end

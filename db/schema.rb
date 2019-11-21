@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_13_202439) do
+ActiveRecord::Schema.define(version: 2019_11_21_153537) do
 
   create_table "abouts", force: :cascade do |t|
     t.text "description"
@@ -59,6 +59,17 @@ ActiveRecord::Schema.define(version: 2019_11_13_202439) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "customers", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "phone"
+    t.string "address"
+    t.integer "province_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["province_id"], name: "index_customers_on_province_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.decimal "price"
@@ -80,12 +91,22 @@ ActiveRecord::Schema.define(version: 2019_11_13_202439) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "soldproducts", force: :cascade do |t|
+    t.decimal "price"
+    t.integer "product_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_soldproducts_on_product_id"
+  end
+
   create_table "statuses", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
   end
 
+  add_foreign_key "customers", "provinces"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "statuses"
+  add_foreign_key "soldproducts", "products"
 end
