@@ -3,14 +3,14 @@
       <div class="card-body">
 <h4 class="card-title">
 
-<%= image_tag("#{product.image}", style: "height:400px; width: 400px")%>
+<%= image_tag("#{products.image}", style: "height:400px; width: 400px")%>
   <% if name_is_link %>
-    <p><%= link_to product.name, product_show_path(id: product.id)%> </p>
+    <p><%= link_to products.name, products%> </p>
   <% else %>
-    <p><%= product.name %></p>
+    <p><%= products.name %></p>
   <% end %>
 </h4>
-<h5><%= product.price %></h5>
+<h5><%= products.price %></h5>
   <p class="card-text"></p>
         </div>
     </div>
