@@ -5,11 +5,12 @@ Rails.application.routes.draw do
 
 
   get 'contacts/index'
-  resource :about
+  get 'products/search'
+  resources :about
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   resources :products, only: %i[index show]
-
+  resources :contacts
 
   root 'about#index'
 
