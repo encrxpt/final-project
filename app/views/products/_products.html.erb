@@ -1,17 +1,17 @@
-  <div class="col-lg-3 col-md-6 mb-3" style="padding-top: 10px; padding-left: 50px; margin:0px auto;">
-    <div class="card">
-      <div class="card-body">
-<h4 class="card-title">
-
-<%= image_tag("#{products.image}", style: "height:300px; width: 300px")%>
-  <% if name_is_link %>
-    <p><%= link_to products.name, products%> </p>
-  <% else %>
-    <p><%= products.name %></p>
-  <% end %>
-</h4>
-<h5><%= products.price %></h5>
-  <p class="card-text"></p>
-        </div>
+<div class="col-lg-3 col-md-6 mb-3" style="padding-top: 10px; padding-left: 50px; margin:0px auto;">
+  <div class="card">
+    <div class="card-body">
+      <div class="car-img-top">
+        <% image_tag url_for(products.image)%>
+        <h4 class="card-title">
+          <% if name_is_link %>
+            <p><%= link_to products.name, products%> </p>
+          <% else %>
+            <p><%= products.name %></p>
+          <% end %>
+        </h4>
+        <h5><%= products.price %></h5>
+      </div>
     </div>
   </div>
+</div>

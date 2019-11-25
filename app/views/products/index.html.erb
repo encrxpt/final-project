@@ -1,6 +1,6 @@
 
 <div class="row">
-
+    <%== pagy_bootstrap_nav(@pagy).html_safe%>
     <%= render partial: 'products',
                 collection: @products,
                 locals: {name_is_link: true} %>

@@ -1,10 +1,10 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.all
+    @pagy, @products = pagy(Product.all, items: 8)
   end
 
   def show
-    @product = Product.find(params[:id])
+    @pagy, @product = pagy(Product.find(params[:id]), items: 8)
   end
 
   def search
@@ -13,11 +13,11 @@ class ProductsController < ApplicationController
     @product_name = params[:product_name]
 
     if params[:product][:category_id].present?
-        @products = Product.where("category_id = ?", @category_id)
+        @pagy, @products = pagy(Product.where("category_id = ?", @category_id), items: 8)
     end
 
     if params[:product][:category_id].present? && params[:product_name]
-      @products = Product.where("category_id = ? and name like ?", @category_id, "%#{@product_name.downcase}%")
+      @pagy, @products = pagy(Product.where("category_id = ? and name like ?", @category_id, "%#{@product_name.downcase}%"), items: 8)
     end
 
   end
