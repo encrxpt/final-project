@@ -23,7 +23,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="/products/">Home</a>
+        <a class="nav-link" href="/products/">Products</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/about/">About Us</a>
@@ -31,25 +31,36 @@
       <li class="nav-item">
         <a class="nav-link" href="/contacts/">Contact Us</a>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Products
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="">Tees</a>
-        <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Hoodies</a>
-        <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Sweaters</a>
-        </div>
-      </li>
     </ul>
 
-    <form accept-charset="UTF-8"  class="form-inline my-2 my-lg-0" method="GET" action="/products/search" >
+    <div class="navbar-end">
+      <div class="navbar-item">
+          <%= form_tag(filter_products_path, :method => "get", id: "filter-form", class: 'navbar-item', class: 'form-inline') do %>
+           <%= select_tag :status_id, options_from_collection_for_select(Status.all, 'id', 'name'), :prompt => "Status", class: 'navbar-item' %>
+            <%= submit_tag "Filter", class:"button is-info" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="navbar-item">
+          <%= form_tag(search_products_path, :method => "get", id: "search-form", class: 'navbar-item', class: 'form-inline') do %>
+            <%= select_tag :category_id, options_from_collection_for_select(Category.all, 'id', 'name'), :prompt => "Categories", class: 'navbar-item' %>
+            <%= text_field_tag :product_name, params[:product_name], placeholder: "Search for a product...", class: "input", class: "navbar-item"%>
+            <%= submit_tag "Search", class:"button is-info" %>
+          <% end %>
+      </div>
+
+    <%# <form accept-charset="UTF-8"  class="form-inline my-2 my-lg-0" method="GET" action="/products/search" >
+    <div  class="box">
       <%= collection_select :product, :category_id, Category.all, :id, :name%>
+    <%# </div>
+
+     <div  class="box2">
+        <%= collection_select :product, :status_id, Status.all, :id, :name, :include_blank => true%>
+    <%# </div>
+
       <input class="form-control mr-sm-2" type="search" placeholder="name" name="product_name" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    </form> %>
   </div>
 </nav>
   <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel"  >

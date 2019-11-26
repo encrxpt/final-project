@@ -1,17 +1,20 @@
-<div class="col-lg-3 col-md-6 mb-3" style="padding-top: 10px; padding-left: 50px; margin:0px auto;">
-  <div class="card">
+
+  <div class="col-md-3">
+    <div class="card" style="width: 18rem;" >
+      <%=image_tag url_for(products.product_image), class:"card-img-top", height: ''%>
     <div class="card-body">
-      <div class="car-img-top">
-        <% image_tag url_for(products.image)%>
-        <h4 class="card-title">
-          <% if name_is_link %>
-            <p><%= link_to products.name, products%> </p>
+      <%# <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> %>
+       <% if name_is_link %>
+       <h5 class="card-title"><%= link_to products.name, products %></h5>
           <% else %>
-            <p><%= products.name %></p>
+          <h5 class="card-title"><%= products.name %></h5>
           <% end %>
-        </h4>
-        <h5><%= products.price %></h5>
-      </div>
+         <p><%= products.price %> </p>
+         <p><%= products.status.name %> </p>
+        <%= link_to products.name, products, class: "btn btn-primary text-white"%>
+
     </div>
-  </div>
 </div>
+  </div>
+
+
